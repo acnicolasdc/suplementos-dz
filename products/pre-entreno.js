@@ -10,7 +10,8 @@ const preEntrenoProducts = [
             "Energía explosiva",
             "Mayor concentración",
             "Mejor bombeo muscular"
-        ]
+        ],
+        flavors: ["Fruit Punch", "Blue Raspberry", "Watermelon", "Tropical"]
     },
     {
         id: "pre_2",
@@ -23,6 +24,7 @@ const preEntrenoProducts = [
             "Sin crash posterior",
             "Fórmula natural",
             "Mejor rendimiento"
-        ]
+        ],
+        flavors: ["Fruit Punch", "Mango", "Sandía", "Uva"]
     }
 ];

@@ -10,7 +10,8 @@ const aminoacidosProducts = [
             "Previene el catabolismo",
             "Mejora la recuperación",
             "Aumenta la resistencia"
-        ]
+        ],
+        flavors: ["Fruit Punch", "Limón", "Naranja", "Uva"]
     },
     {
         id: "amino_2",
@@ -23,6 +24,7 @@ const aminoacidosProducts = [
             "9 aminoácidos esenciales",
             "Mejor síntesis proteica",
             "Recuperación optimizada"
-        ]
+        ],
+        flavors: ["Fruit Punch", "Sandía", "Mango", "Piña"]
     }
 ];

@@ -10,7 +10,8 @@ const proteinProducts = [
             "Alta concentración de proteína",
             "Rápida absorción",
             "Ideal post-entrenamiento"
-        ]
+        ],
+        flavors: ["Chocolate", "Vainilla", "Fresa", "Cookies & Cream", "Banana"]
     },
     {
         id: "prot_2",
@@ -23,6 +24,7 @@ const proteinProducts = [
             "Liberación prolongada",
             "Previene el catabolismo nocturno",
             "Alta pureza"
-        ]
+        ],
+        flavors: ["Chocolate", "Vainilla", "Fresa"]
     }
 ];

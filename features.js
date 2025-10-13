@@ -79,6 +79,18 @@ async function showProductDetails(productId) {
         } else {
             dosageSection.style.display = 'none';
         }
+
+        // Update flavors if available
+        const flavorsContainer = document.getElementById('modalFlavors');
+        const flavorsSection = flavorsContainer.closest('.flavors-section');
+        if (product.flavors && product.flavors.length > 0) {
+            flavorsContainer.innerHTML = product.flavors.map(flavor => 
+                `<span class="flavor-tag">${flavor}</span>`
+            ).join('');
+            flavorsSection.style.display = 'block';
+        } else {
+            flavorsSection.style.display = 'none';
+        }
         
         // Setup add to cart button
         const addToCartBtn = document.getElementById('modalAddToCart');
@@ -196,7 +208,7 @@ function sendWhatsAppOrder() {
         return;
     }
 
-    const phoneNumber = '312816901541';
+    const phoneNumber = '3187399877';
     let message = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
     
     cart.forEach(item => {
