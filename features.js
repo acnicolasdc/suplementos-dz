@@ -36,6 +36,65 @@ function updateCartTotal() {
     document.getElementById('cartTotal').textContent = `$${formatPrice(total)}`;
 }
 
+// Show product details
+async function showProductDetails(productId) {
+    const allProducts = await loadAllProducts();
+    const product = allProducts.find(p => p.id === productId);
+    
+    if (product) {
+        // Update modal content
+        document.getElementById('modalImage').src = product.image;
+        document.getElementById('modalImage').alt = product.name;
+        document.getElementById('modalTitle').textContent = product.name;
+        document.getElementById('modalPrice').textContent = `$${formatPrice(product.price)}`;
+        document.getElementById('modalDescription').textContent = product.description || '';
+        
+        // Update benefits
+        const benefitsList = document.getElementById('modalBenefits');
+        benefitsList.innerHTML = product.benefits.map(benefit => 
+            `<li><i class="fas fa-check"></i>${benefit}</li>`
+        ).join('');
+        
+        // Update nutrition info if available
+        const nutritionInfo = document.getElementById('modalNutrition');
+        const nutritionSection = nutritionInfo.closest('.nutrition-section');
+        if (product.nutrition) {
+            nutritionInfo.innerHTML = Object.entries(product.nutrition).map(([key, value]) => 
+                `<div>
+                    <span>${key}</span>
+                    <span>${value}</span>
+                </div>`
+            ).join('');
+            nutritionSection.style.display = 'block';
+        } else {
+            nutritionSection.style.display = 'none';
+        }
+        
+        // Update dosage if available
+        const dosageText = document.getElementById('modalDosage');
+        const dosageSection = dosageText.closest('.dosage-section');
+        if (product.dosage) {
+            dosageText.textContent = product.dosage;
+            dosageSection.style.display = 'block';
+        } else {
+            dosageSection.style.display = 'none';
+        }
+        
+        // Setup add to cart button
+        const addToCartBtn = document.getElementById('modalAddToCart');
+        addToCartBtn.onclick = () => {
+            addToCart(productId);
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        
+        // Show modal
+        const modal = document.getElementById('productModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
 // Add to cart
 async function addToCart(productId) {
     try {
@@ -191,6 +250,16 @@ async function displayProducts(category = 'todos') {
         </div>
     `).join('');
 
+    // Agregar event listener para abrir el modal al hacer clic en la tarjeta
+    productGrid.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', async (e) => {
+            if (!e.target.classList.contains('add-to-cart')) {
+                const productId = card.dataset.productId;
+                await showProductDetails(productId);
+            }
+        });
+    });
+
     // Agregar event listeners a los botones después de crear los elementos
     productGrid.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', async (e) => {
@@ -238,6 +307,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (whatsappOrderButton) {
         whatsappOrderButton.addEventListener('click', sendWhatsAppOrder);
+    }
+
+    // Setup modal functionality
+    const modal = document.getElementById('productModal');
+    const closeModal = document.querySelector('.close-modal');
+
+    if (closeModal && modal) {
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
     }
 
     // Category filters

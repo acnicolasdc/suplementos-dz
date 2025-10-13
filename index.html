@@ -27,8 +27,6 @@
                     <button><i class="fas fa-search"></i></button>
                 </div>
                 <div class="header-icons">
-                    <a href="#" class="icon-link"><i class="fas fa-search"></i></a>
-                    <a href="#" class="icon-link"><i class="fas fa-user"></i></a>
                     <a href="#" class="icon-link cart" id="cartButton">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
@@ -59,8 +57,51 @@
                         </div>
                     </div>
                     
-                    <!-- Cart Overlay -->
-                    <div class="cart-overlay"></div>
+    <!-- Cart Overlay -->
+    <div class="cart-overlay"></div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="product-details">
+                    <div class="product-image">
+                        <img id="modalImage" src="" alt="">
+                    </div>
+                    <div class="product-info">
+                        <div class="price-section">
+                            <span class="price" id="modalPrice"></span>
+                        </div>
+                        <div class="description-section">
+                            <h3>Descripción</h3>
+                            <p id="modalDescription"></p>
+                        </div>
+                        <div class="benefits-section">
+                            <h3>Beneficios</h3>
+                            <ul id="modalBenefits" class="benefits-list"></ul>
+                        </div>
+                        <div class="nutrition-section">
+                            <h3>Información Nutricional</h3>
+                            <div id="modalNutrition" class="nutrition-info"></div>
+                        </div>
+                        <div class="dosage-section">
+                            <h3>Modo de Uso</h3>
+                            <p id="modalDosage"></p>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="add-to-cart-modal" id="modalAddToCart">
+                                <i class="fas fa-shopping-cart"></i> Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
                 </div>
             </div>
         </div>
