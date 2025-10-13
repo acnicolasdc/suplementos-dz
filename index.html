@@ -29,8 +29,38 @@
                 <div class="header-icons">
                     <a href="#" class="icon-link"><i class="fas fa-search"></i></a>
                     <a href="#" class="icon-link"><i class="fas fa-user"></i></a>
-                    <a href="#" class="icon-link"><i class="fas fa-bell"></i></a>
-                    <a href="#" class="icon-link cart"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                    <a href="#" class="icon-link cart" id="cartButton">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <!-- Cart Sidebar -->
+                    <div class="cart-sidebar" id="cartSidebar">
+                        <div class="cart-header">
+                            <h3>Carrito de Compras</h3>
+                            <button class="close-cart"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="cart-items" id="cartItems">
+                            <!-- Cart items will be added here dynamically -->
+                        </div>
+                        <div class="cart-footer">
+                            <div class="cart-total">
+                                <span>Total:</span>
+                                <span id="cartTotal">$0</span>
+                            </div>
+                            <button class="whatsapp-order" id="whatsappOrder">
+                                <i class="fab fa-whatsapp"></i>
+                                Hacer pedido por WhatsApp
+                            </button>
+                            <button class="clear-cart" id="clearCart">
+                                <i class="fas fa-trash"></i>
+                                Limpiar carrito
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Cart Overlay -->
+                    <div class="cart-overlay"></div>
                 </div>
             </div>
         </div>
