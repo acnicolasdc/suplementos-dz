@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suplementos Colombia - Tu Mejor Opción en Suplementos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="products/proteinas.js" defer></script>
+    <script src="products/creatinas.js" defer></script>
+    <script src="products/aminoacidos.js" defer></script>
+    <script src="products/pre-entreno.js" defer></script>
+    <script src="products/vitaminas.js" defer></script>
+    <script src="products/accesorios.js" defer></script>
+    <script src="products/hormonales.js" defer></script>
+    <script src="features.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="logo">
+                    <img src="https://suplementoscolombia.co/cdn/shop/files/LOGO_SUPLEMENTOS_COLOMBIA_410x.png" alt="Suplementos Colombia">
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar productos...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-icons">
+                    <a href="#" class="icon-link"><i class="fas fa-search"></i></a>
+                    <a href="#" class="icon-link"><i class="fas fa-user"></i></a>
+                    <a href="#" class="icon-link"><i class="fas fa-bell"></i></a>
+                    <a href="#" class="icon-link cart"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="#" class="active" data-category="todos">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="#">Productos <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#" data-category="proteinas">Proteínas</a>
+                            <a href="#" data-category="creatinas">Creatinas</a>
+                            <a href="#" data-category="aminoacidos">Aminoácidos</a>
+                            <a href="#" data-category="pre-entreno">Pre-entreno</a>
+                            <a href="#" data-category="vitaminas">Vitaminas</a>
+                            <a href="#" data-category="accesorios">Accesorios</a>
+                            <a href="#" data-category="hormonales">Hormonales</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="products-section">
+            <div class="container">
+                <h1>Productos</h1>
+                <p class="products-count">¡Más de 130 productos disponibles!</p>
+                
+                <div class="product-grid" id="productGrid">
+                    <!-- Los productos se cargarán dinámicamente aquí -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Suplementos Colombia</h3>
+                    <p>Tu mejor opción en suplementos deportivos</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Suplementos Colombia. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
