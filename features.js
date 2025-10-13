@@ -269,8 +269,81 @@ async function displayProducts(category = 'todos') {
     });
 }
 
+// Función de búsqueda de productos
+async function searchProducts(searchTerm) {
+    const allProducts = await loadAllProducts();
+    searchTerm = searchTerm.toLowerCase().trim();
+    
+    if (searchTerm === '') {
+        return allProducts;
+    }
+
+    return allProducts.filter(product => {
+        const productName = product.name.toLowerCase();
+        return productName.includes(searchTerm);
+    });
+}
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    // Configurar búsqueda
+    const searchInput = document.querySelector('.search-bar input');
+    let searchTimeout;
+
+    if (searchInput) {
+        searchInput.addEventListener('input', async (e) => {
+            const searchTerm = e.target.value;
+            
+            // Limpiar el timeout anterior
+            clearTimeout(searchTimeout);
+            
+            // Esperar a que el usuario termine de escribir
+            searchTimeout = setTimeout(async () => {
+                if (searchTerm.length >= 2) {
+                    const searchResults = await searchProducts(searchTerm);
+                    
+                    document.querySelector('.products-count').textContent = 
+                        `${searchResults.length} productos encontrados`;
+                    
+                    const productGrid = document.getElementById('productGrid');
+                    if (productGrid) {
+                        productGrid.innerHTML = searchResults.map(product => `
+                            <div class="product-card" data-product-id="${product.id}" data-category="${product.category}">
+                                <img src="${product.image}" alt="${product.name}" loading="lazy">
+                                <h3>${product.name}</h3>
+                                <div class="price">$${formatPrice(product.price)}</div>
+                                <button class="add-to-cart" data-product-id="${product.id}">
+                                    AÑADIR A LA CESTA
+                                </button>
+                            </div>
+                        `).join('');
+
+                        // Agregar event listeners a las tarjetas
+                        productGrid.querySelectorAll('.product-card').forEach(card => {
+                            card.addEventListener('click', async (e) => {
+                                if (!e.target.classList.contains('add-to-cart')) {
+                                    const productId = card.dataset.productId;
+                                    await showProductDetails(productId);
+                                }
+                            });
+                        });
+
+                        // Agregar event listeners a los botones
+                        productGrid.querySelectorAll('.add-to-cart').forEach(button => {
+                            button.addEventListener('click', async (e) => {
+                                const productId = e.target.dataset.productId;
+                                await addToCart(productId);
+                            });
+                        });
+                    }
+                } else if (searchTerm.length === 0) {
+                    document.querySelector('.products-count').textContent = 
+                        '¡Más de 130 productos disponibles!';
+                    displayProducts('todos');
+                }
+            }, 300); // Esperar 300ms después de que el usuario deje de escribir
+        });
+    }
     // Cart functionality
     const cartButton = document.getElementById('cartButton');
     const cartSidebar = document.getElementById('cartSidebar');

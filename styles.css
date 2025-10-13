@@ -61,7 +61,7 @@ body {
 
 .search-bar button {
     padding: 0.8rem 1.2rem;
-    background: #2c3e50;
+    background: #000;
     color: white;
     border: none;
     border-radius: 0 4px 4px 0;
@@ -409,8 +409,8 @@ body {
 }
 
 .add-to-cart {
-    background: #2c3e50;
-    color: white;
+    background: #000;
+    color: #fff;
     border: none;
     padding: 0.8rem;
     border-radius: 4px;
@@ -423,12 +423,12 @@ body {
 }
 
 .add-to-cart:hover {
-    background: #34495e;
+    background: #000;
 }
 
 /* Footer */
 .footer {
-    background: #2c3e50;
+    background: #000;
     color: white;
     padding: 3rem 0 1rem;
     margin-top: 4rem;
