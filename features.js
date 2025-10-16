@@ -45,6 +45,18 @@ async function showProductDetails(productId) {
         // Update modal content
         document.getElementById('modalImage').src = product.image;
         document.getElementById('modalImage').alt = product.name;
+        // Optional nutrition image
+        const modalNutritionImage = document.getElementById('modalNutritionImage');
+        if (modalNutritionImage) {
+            if (product.nutritionImage) {
+                modalNutritionImage.src = product.nutritionImage;
+                modalNutritionImage.style.display = '';
+                modalNutritionImage.alt = `Información nutricional de ${product.name}`;
+            } else {
+                modalNutritionImage.style.display = 'none';
+                modalNutritionImage.src = '';
+            }
+        }
         document.getElementById('modalTitle').textContent = product.name;
         document.getElementById('modalPrice').textContent = `$${formatPrice(product.price)}`;
         document.getElementById('modalDescription').textContent = product.description || '';
@@ -104,6 +116,46 @@ async function showProductDetails(productId) {
         const modal = document.getElementById('productModal');
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+    }
+}
+
+// Simple image lightbox for modal images
+function setupImageLightbox() {
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImage');
+    const modalImage = document.getElementById('modalImage');
+    const modalNutritionImage = document.getElementById('modalNutritionImage');
+
+    function openLightbox(src, alt) {
+        if (!lightbox || !lightboxImg || !src) return;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    if (lightbox) {
+        lightbox.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display !== 'none') {
+                closeLightbox();
+            }
+        });
+    }
+
+    if (modalImage) {
+        modalImage.style.cursor = 'zoom-in';
+        modalImage.addEventListener('click', () => openLightbox(modalImage.src, modalImage.alt));
+    }
+    if (modalNutritionImage) {
+        modalNutritionImage.style.cursor = 'zoom-in';
+        modalNutritionImage.addEventListener('click', () => openLightbox(modalNutritionImage.src, modalNutritionImage.alt));
     }
 }
 
@@ -446,4 +498,5 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     renderCart();
     displayProducts('todos');
+    setupImageLightbox();
 });
