@@ -38,9 +38,91 @@ body {
     align-items: center;
 }
 
-.logo img {
-    height: 40px;
-    width: auto;
+/* ==========================================
+   ESTILOS PARA EL LOGO
+   ========================================== */
+
+/* Contenedor del logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+/* Imagen del logo (icono triangular) */
+.logo-icon {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Contenedor del texto del logo */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Título SUPLEMENTOS DZ */
+.logo-text h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* Subtítulo del logo */
+.logo-tagline {
+    margin: 0;
+    font-size: 13px;
+    color: #7ed321;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive para tablets */
+@media (max-width: 768px) {
+    .logo {
+        gap: 10px;
+    }
+    
+    .logo-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .logo-text h1 {
+        font-size: 20px;
+    }
+    
+    .logo-tagline {
+        font-size: 11px;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+    .logo {
+        gap: 8px;
+    }
+    
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .logo-text h1 {
+        font-size: 16px;
+    }
+    
+    .logo-tagline {
+        font-size: 9px;
+    }
 }
 
 .search-bar {

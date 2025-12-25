@@ -1,6 +1,7 @@
-const vitaminasProducts = [
+// Productos de Vitaminas
+window.vitaminasProducts = [
     {
-        id: "vit_1",
+        id: 61,
         name: "Multi-Vitamin Sport",
         description: "Complejo vitamínico para deportistas",
         price: 19.99,
@@ -13,7 +14,7 @@ const vitaminasProducts = [
         ]
     },
     {
-        id: "vit_2",
+        id: 62,
         name: "Vitamin D3 + K2",
         description: "Salud ósea y muscular",
         price: 24.99,

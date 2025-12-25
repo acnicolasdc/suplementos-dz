@@ -1,6 +1,7 @@
-const accesoriosProducts = [
+// Productos de Accesorios
+window.accesoriosProducts = [
     {
-        id: "acc_1",
+        id: 71,
         name: "Shaker Premium",
         description: "Shaker profesional con compartimentos",
         price: 14.99,
@@ -13,7 +14,7 @@ const accesoriosProducts = [
         ]
     },
     {
-        id: "acc_2",
+        id: 72,
         name: "Cinturón de Levantamiento",
         description: "Soporte lumbar para ejercicios pesados",
         price: 39.99,

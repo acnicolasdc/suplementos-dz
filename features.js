@@ -38,6 +38,9 @@ function updateCartTotal() {
 
 // Show product details
 async function showProductDetails(productId) {
+    // CORREGIDO: Convertir productId a número
+    productId = parseInt(productId);
+    
     const allProducts = await loadAllProducts();
     const product = allProducts.find(p => p.id === productId);
     
@@ -162,6 +165,9 @@ function setupImageLightbox() {
 // Add to cart
 async function addToCart(productId) {
     try {
+        // CORREGIDO: Convertir productId a número
+        productId = parseInt(productId);
+        
         const allProducts = await loadAllProducts();
         const product = allProducts.find(p => p.id === productId);
         
@@ -218,6 +224,35 @@ function removeFromCart(productId) {
     renderCart();
 }
 
+// Render cart items
+function renderCart() {
+    const cartItems = document.getElementById('cartItems');
+    if (!cartItems) return;
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = '<p class="empty-cart">Tu carrito está vacío</p>';
+        return;
+    }
+
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-details">
+                <h4>${item.name}</h4>
+                <p class="cart-item-price">$${formatPrice(item.price)}</p>
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="updateQuantity(${item.id}, 1)">+</button>
+                </div>
+            </div>
+            <button class="remove-item" onclick="removeFromCart(${item.id})">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    `).join('');
+}
+
 // Clear cart
 function clearCart() {
     cart = [];
@@ -225,66 +260,44 @@ function clearCart() {
     renderCart();
 }
 
-// Render cart items
-function renderCart() {
-    const cartItems = document.getElementById('cartItems');
-    
-    if (cart.length === 0) {
-        cartItems.innerHTML = '<p class="empty-cart">Tu carrito está vacío</p>';
-        return;
-    }
-    
-    cartItems.innerHTML = cart.map(item => `
-        <div class="cart-item" data-id="${item.id}">
-            <img src="${item.image}" alt="${item.name}">
-            <div class="cart-item-details">
-                <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-price">$${formatPrice(item.price)}</div>
-                <div class="cart-item-quantity">
-                    <button class="quantity-btn minus" onclick="updateQuantity('${item.id}', -1)">-</button>
-                    <span>${item.quantity}</span>
-                    <button class="quantity-btn plus" onclick="updateQuantity('${item.id}', 1)">+</button>
-                </div>
-            </div>
-            <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    `).join('');
-}
-
-// Send order to WhatsApp
+// Send WhatsApp order
 function sendWhatsAppOrder() {
     if (cart.length === 0) {
-        alert('El carrito está vacío');
+        alert('Tu carrito está vacío');
         return;
     }
 
-    const phoneNumber = '3187399877';
-    let message = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let message = '¡Hola! Me gustaría hacer el siguiente pedido:%0A%0A';
     
     cart.forEach(item => {
-        message += `▪ ${item.quantity}x ${item.name} - $${formatPrice(item.price * item.quantity)}\n`;
+        message += `${item.name}%0ACantidad: ${item.quantity}%0APrecio: $${formatPrice(item.price)}%0A%0A`;
     });
     
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    message += `\nTotal: $${formatPrice(total)}`;
+    message += `*Total: $${formatPrice(total)}*`;
     
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    // Reemplaza este número con tu número de WhatsApp
+    const phoneNumber = '573123456789'; // Cambia este número
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
 }
 
-// Load all products
+// CORREGIDO: Función simplificada para cargar productos
 async function loadAllProducts() {
     try {
+        // Si existe el archivo products.js con la variable products
+        if (typeof products !== 'undefined') {
+            return products;
+        }
+        
+        // Si no, intentar cargar desde los archivos individuales
         const allProducts = [
-            ...proteinProducts,
-            ...creatinaProducts,
-            ...aminoacidosProducts,
-            ...preEntrenoProducts,
-            ...vitaminasProducts,
-            ...accesoriosProducts,
-            ...hormonalesProducts
+            ...(window.proteinasProducts || []),
+            ...(window.creatinasProducts || []),
+            ...(window.aminoacidosProducts || []),
+            ...(window.preEntrenoProducts || []),
+            ...(window.vitaminasProducts || []),
+            ...(window.accesoriosProducts || []),
+            ...(window.hormonalesProducts || [])
         ];
         return allProducts;
     } catch (error) {
@@ -327,6 +340,7 @@ async function displayProducts(category = 'todos') {
     // Agregar event listeners a los botones después de crear los elementos
     productGrid.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', async (e) => {
+            e.stopPropagation(); // Evitar que se abra el modal
             const productId = e.target.dataset.productId;
             await addToCart(productId);
         });
@@ -395,6 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Agregar event listeners a los botones
                         productGrid.querySelectorAll('.add-to-cart').forEach(button => {
                             button.addEventListener('click', async (e) => {
+                                e.stopPropagation();
                                 const productId = e.target.dataset.productId;
                                 await addToCart(productId);
                             });
@@ -408,6 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300); // Esperar 300ms después de que el usuario deje de escribir
         });
     }
+    
     // Cart functionality
     const cartButton = document.getElementById('cartButton');
     const cartSidebar = document.getElementById('cartSidebar');

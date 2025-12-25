@@ -1,6 +1,7 @@
-const hormonalesProducts = [
+// Productos Hormonales
+window.hormonalesProducts = [
     {
-        id: "horm_1",
+        id: 81,
         name: "Tribulus Terrestris",
         description: "Potenciador natural de testosterona",
         price: 29.99,
@@ -13,7 +14,7 @@ const hormonalesProducts = [
         ]
     },
     {
-        id: "horm_2",
+        id: 82,
         name: "ZMA Plus",
         description: "Optimizador hormonal nocturno",
         price: 24.99,

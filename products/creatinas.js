@@ -1,6 +1,7 @@
-const creatinaProducts = [
+// Productos de Creatinas
+window.creatinasProducts = [
     {
-        id: "crea_1",
+        id: 21,
         name: "CREATINA PLATINUM QR 80 SERV",
         description: "Aumenta tu fuerza y rendimiento muscular",
         price: 150000,
@@ -14,7 +15,7 @@ const creatinaProducts = [
         ]
     },
     {
-        id: "crea_2",
+        id: 22,
         name: "CREATINA MONOHIDRATADA CREAPURE DYMATIZE 60 SERV",
         description: "Mayor absorción y menos retención de agua",
         price: 120000,
@@ -28,7 +29,7 @@ const creatinaProducts = [
         ]
     },
     {
-        id: "crea_3",
+        id: 23,
         name: "CREATINE BASIC 60 SERV",
         description: "Aumenta tu fuerza y rendimiento muscular",
         price: 100000,
@@ -42,7 +43,7 @@ const creatinaProducts = [
         ]
     },
     {
-        id: "crea_4",
+        id: 24,
         name: "CREATINA ON 120 SERV",
         description: "Mayor absorción y menos retención de agua",
         price: 180000,
@@ -56,7 +57,7 @@ const creatinaProducts = [
         ]
     },
     {
-        id: "crea_5",
+        id: 25,
         name: "CREATINA IRON 100 SERV",
         description: "Aumenta tu fuerza y rendimiento muscular",
         price: 110000,
@@ -70,7 +71,7 @@ const creatinaProducts = [
         ]
     },
     {
-        id: "crea_6",
+        id: 26,
         name: "CREATINA ON 60 SERV",
         description: "Mayor absorción y menos retención de agua",
         price: 110000,
@@ -84,7 +85,7 @@ const creatinaProducts = [
         ]
     },
     {
-        id: "crea_7",
+        id: 27,
         name: "CREA STACK 60 SERV",
         description: "Aumenta tu fuerza y rendimiento muscular",
         price: 140000,
@@ -98,7 +99,7 @@ const creatinaProducts = [
         ]
     },
     {
-        id: "crea_8",
+        id: 28,
         name: "CREATINA ON 3 EN 1 40 SERV",
         description: "Mayor absorción y menos retención de agua",
         price: 105000,
@@ -110,14 +111,15 @@ const creatinaProducts = [
             "Sin retención de agua",
             "Resultados rápidos"
         ]
-    }, {
-        id: "crea_9",
-        name: "Creatina Premium",
+    },
+    {
+        id: 29,
+        name: "CREATINA LEGACY 50 SERV",
         description: "Aumenta tu fuerza y rendimiento muscular",
         price: 110000,
         image: "https://suplementos.b-cdn.net/creatinas/legacy-50s-fruitpunch-600x800.webp",
         nutritionImage: "https://suplementos.b-cdn.net/tablas%20nutricionales/legacy-50serv-tabla-800.webp",
-            category: "creatinas",
+        category: "creatinas",
         benefits: [
             "Aumenta la fuerza muscular",
             "Mejora el rendimiento deportivo",
@@ -125,8 +127,8 @@ const creatinaProducts = [
         ]
     },
     {
-        id: "crea_10",
-        name: "Creatina HCL",
+        id: 30,
+        name: "CELL TECH 3 LB",
         description: "Mayor absorción y menos retención de agua",
         price: 135000,
         image: "https://suplementos.b-cdn.net/creatinas/cell-tech-3lbs-fruit-punch-600x800.webp",
@@ -139,8 +141,8 @@ const creatinaProducts = [
         ]
     },
     {
-        id: "crea_11",
-        name: "Creatina HCL",
+        id: 31,
+        name: "CREATINA MONOHIDRATADA",
         description: "Mayor absorción y menos retención de agua",
         price: 50000,
         image: "https://http2.mlstatic.com/D_NQ_NP_2X_941662-MCO93053576516_092025-F.webp",
@@ -151,20 +153,5 @@ const creatinaProducts = [
             "Sin retención de agua",
             "Resultados rápidos"
         ]
-    },
-    {
-        id: "crea_12",
-        name: "Creatina HCL",
-        description: "Mayor absorción y menos retención de agua",
-        price: 34.99,
-        image: "https://m.media-amazon.com/images/I/71f+UBXh2vL._AC_SL1500_.jpg",
-        nutritionImage: "",
-        category: "creatinas",
-        benefits: [
-            "Mejor absorción",
-            "Sin retención de agua",
-            "Resultados rápidos"
-        ]
-    },
-
+    }
 ];

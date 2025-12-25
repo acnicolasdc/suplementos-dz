@@ -1,6 +1,7 @@
-const proteinProducts = [
+// Productos de Proteínas
+window.proteinasProducts = [
     {
-        id: "prot_1",
+        id: 1,
         name: "WHEY GOLD STANDARD 5 LB",
         description: "Recuperación muscular y crecimiento",
         price: 360000,
@@ -15,7 +16,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE", "VAINILLA", "FRESA", "COOKIES & CREAM"]
     },
     {
-        id: "prot_2",
+        id: 2,
         name: "NITRO TECHE WHEY GOLD 4 LB",
         description: "Liberación lenta para recuperación nocturna",
         price: 340000,
@@ -30,7 +31,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE", "VAINILLA", "FRESA"]
     },
     {
-        id: "prot_3",
+        id: 3,
         name: "ISO 100 5 LB",
         description: "Recuperación muscular y crecimiento",
         price: 430000,
@@ -45,7 +46,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE", "VAINILLA", "FRESA", "COOKIES & CREAM"]
     },
     {
-        id: "prot_4",
+        id: 4,
         name: "WHEY BASIC 5 LB",
         description: "Recuperación muscular y crecimiento",
         price: 275000,
@@ -60,7 +61,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE", "VAINILLA", "FRESA", "COOKIES & CREAM"]
     },
     {
-        id: "prot_5",
+        id: 5,
         name: "BI-PRO CLASSIC 2 LB",
         description: "Recuperación muscular y crecimiento",
         price: 155000,
@@ -75,7 +76,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE", "VAINILLA", "NATURAL"]
     },
     {
-        id: "prot_6",
+        id: 6,
         name: "BEST PROTEIN 2 LB",
         description: "Recuperación muscular y crecimiento",
         price: 180000,
@@ -90,7 +91,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE GOURMET", "VAINILLA", "FRESA"]
     },
     {
-        id: "prot_7",
+        id: 7,
         name: "BEST WHEY 2 LB",
         description: "Recuperación muscular y crecimiento",
         price: 140000,
@@ -105,7 +106,7 @@ const proteinProducts = [
         flavors: ["AREQUIPE", "VAINILLA"]
     },
     {
-        id: "prot_8",
+        id: 8,
         name: "BEST VEGAN 2 LB",
         description: "Recuperación muscular y crecimiento",
         price: 120000,
@@ -120,7 +121,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE", "VAINILLA"]
     },
     {
-        id: "prot_9",
+        id: 9,
         name: "NITRO TECH 2 LB",
         description: "Recuperación muscular y crecimiento",
         price: 180000,
@@ -135,7 +136,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE", "VAINILLA"]
     },
     {
-        id: "prot_10",
+        id: 10,
         name: "WHEY GOLD STANDARD 2 LB",
         description: "Recuperación muscular y crecimiento",
         price: 185000,
@@ -150,7 +151,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE", "VAINILLA"]
     },
     {
-        id: "prot_11",
+        id: 11,
         name: "MASS TECH 6 LB",
         description: "Recuperación muscular y crecimiento",
         price: 230000,
@@ -165,7 +166,7 @@ const proteinProducts = [
         flavors: ["VAINILLA"]
     },
     {
-        id: "prot_12",
+        id: 12,
         name: "SMART PROTEIN 3 LB",
         description: "Recuperación muscular y crecimiento",
         price: 85000,
@@ -180,7 +181,7 @@ const proteinProducts = [
         flavors: ["CHOCOLATE", "VAINILLA", "FRESA"]
     },
     {
-        id: "prot_13",
+        id: 13,
         name: "MEGAPLEX CREATINE 2 LB",
         description: "Recuperación muscular y crecimiento",
         price: 60000,
@@ -195,7 +196,7 @@ const proteinProducts = [
         flavors: ["VAINILLA"]
     },
     {
-        id: "prot_14",
+        id: 14,
         name: "BI-PRO CLASSIC 3 LB",
         description: "Recuperación muscular y crecimiento",
         price: 198000,
@@ -210,7 +211,7 @@ const proteinProducts = [
         flavors: ["VAINILLA"]
     },
     {
-        id: "prot_15",
+        id: 15,
         name: "PANCAKE DORADO TRADICIONAL",
         description: "Recuperación muscular y crecimiento",
         price: 45000,
@@ -225,7 +226,7 @@ const proteinProducts = [
         flavors: ["TRADICIONAL"]
     },
     {
-        id: "prot_16",
+        id: 16,
         name: "PANCAKE DORADO CHOCOLATE",
         description: "Recuperación muscular y crecimiento",
         price: 55000,
@@ -237,10 +238,10 @@ const proteinProducts = [
             "Rápida absorción",
             "Ideal post-entrenamiento"
         ],
-        flavors: ["TRADICIONAL"]
+        flavors: ["CHOCOLATE"]
     },
     {
-        id: "prot_17",
+        id: 17,
         name: "SERIOUS MASS 6 LB",
         description: "Recuperación muscular y crecimiento",
         price: 200000,
@@ -255,7 +256,7 @@ const proteinProducts = [
         flavors: ["VAINILLA"]
     },
     {
-        id: "prot_18",
+        id: 18,
         name: "ISOLATE BASIC 2 LB",
         description: "Recuperación muscular y crecimiento",
         price: 170000,
@@ -267,10 +268,10 @@ const proteinProducts = [
             "Rápida absorción",
             "Ideal post-entrenamiento"
         ],
-    flavors: ["CHOCOLATE", "SALTED CARAMEL"]
+        flavors: ["CHOCOLATE", "SALTED CARAMEL"]
     },
     {
-        id: "prot_19",
+        id: 19,
         name: "CARNIVOR 2 LB",
         description: "Recuperación muscular y crecimiento",
         price: 170000,
@@ -282,10 +283,10 @@ const proteinProducts = [
             "Rápida absorción",
             "Ideal post-entrenamiento"
         ],
-        flavors: ["VAINILLA"]
+        flavors: ["CHOCOLATE"]
     },
     {
-        id: "prot_20",
+        id: 20,
         name: "WHEY PURE 5 LB",
         description: "Recuperación muscular y crecimiento",
         price: 250000,
@@ -297,6 +298,6 @@ const proteinProducts = [
             "Rápida absorción",
             "Ideal post-entrenamiento"
         ],
-    flavors: ["CHOCOLATE", "VAINILLA"]
-    },
+        flavors: ["CHOCOLATE", "VAINILLA"]
+    }
 ];
